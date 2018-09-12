@@ -1,0 +1,9 @@
+@import "~kit/styles/colors";
+
+.table {
+  &__row {
+    &--highlighted {
+      background-color: rgba(76, 175, 80, 0.4);
+    }
+  }
+}
