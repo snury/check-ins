@@ -1,16 +1,10 @@
-// @flow
-
-import type { DispatchAPI } from "redux";
 import callApi, { GET } from "utils/http";
-import type { Action } from "ducks/index";
 import * as ActionTypes from "./constants";
-
-export type CheckInsAction = Action;
 
 /* eslint-disable import/prefer-default-export */
 
-export const loadUsersData = (): CheckInsAction =>
-  (dispatch: DispatchAPI<*>) => dispatch(callApi({
+export const loadUsersData = () =>
+  dispatch => dispatch(callApi({
     endpoint: "/api/users",
     method:   GET,
     types:    [

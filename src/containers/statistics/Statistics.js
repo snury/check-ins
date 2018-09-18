@@ -1,5 +1,3 @@
-// @flow
-
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getClassName } from "kit/utils/components";
@@ -8,25 +6,7 @@ import Container from "components/container/Container";
 import Table from "kit/components/table/Table";
 import Select from "kit/components/select/Select";
 import { loadUsersData } from "ducks/checkins/actions";
-import type {
-  UsersDataClientType,
-  CheckinCountryClientItemType,
-  MaxUsersRatingByCountriesItemType
-} from "ducks/checkins/reducer";
 import "./CheckIns.scss";
-
-type Props = {
-  data: UsersDataClientType,
-  countries: Array<CheckinCountryClientItemType>,
-  maxUsersRatingByCountries: Array<MaxUsersRatingByCountriesItemType>,
-  loadUsersData: Function
-};
-
-type State = {
-  filteredData: ?UsersDataClientType,
-  checkinCountrySelectValue: number,
-  checkActivitySelectValue: number
-};
 
 const cn = getClassName("checkins");
 
@@ -44,7 +24,7 @@ const activityOptions = [
   { id: 2, name: "Not Active" }
 ];
 
-export const styles = (theme: Object) => ({
+export const styles = theme => ({
   root: {
     display:        "table",
     fontFamily:     theme.typography.fontFamily,

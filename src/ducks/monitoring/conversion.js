@@ -1,18 +1,10 @@
-// @flow
-
-import type {
-  UsersDataType,
-  UsersDataClientType,
-  CheckinCountriesClientType
-} from "./reducer";
-
 const removeDuplicates = (myArr, prop) => myArr.filter((obj, pos, arr) =>
   arr.map(mapObj => mapObj[prop]).indexOf(obj[prop]) === pos);
 
 const getMaxRating = data => data.reduce((max, user) => user.rating > max ? user.rating : max, data[0].rating);
 
 export const usersData = {
-  serverToLocal: (data: UsersDataType): UsersDataClientType => data.map((user) => {
+  serverToLocal: data => data.map((user) => {
     const {
       checkin_data: checkinData,
       home_country: homeCountry,
@@ -36,7 +28,7 @@ export const usersData = {
 };
 
 export const checkinCountries = {
-  serverToLocal: (data: UsersDataType): CheckinCountriesClientType => {
+  serverToLocal: (data) => {
     const allUsersCountries = data.map(({ ip }) => ({ name: ip }));
     const uniqueCountries = removeDuplicates(allUsersCountries, "name");
     const countries = uniqueCountries.map(({ name }, id) => ({ id, name }));
